@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="mock1.css"/>
+    <title>Simple Page Design Prototype</title>
+</head>
+<body>
+<div class="header">
+    <h1>Header</h1>
+</div>
+
+<div class="navbar">
+    <a href="#">Link1</a>
+    <a href="#">Link2</a>
+    <a href="#">Link3</a>
+</div>
+
+<div class="overview-panel">
+
+    <div id="fate-panel">
+        <h3>Fate Overview</h3>
+        <table>
+            <tr>
+                <td># Fates</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Oldest</td>
+                <td>1:13:11</td>
+            </tr>
+            <tr>
+                <td>Last Change</td>
+                <td>1:01:23</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="accumulo-panel">
+        <h3>Accumulo Overview</h3>
+        <table>
+            <tr>
+                <td>Active Master</td>
+                <td>node1</td>
+            </tr>
+            <tr>
+                <td>Backup Master</td>
+                <td>node2</td>
+            </tr>
+            <tr>
+                <td>Last GC</td>
+                <td>2018-02-01T12:34</td>
+            </tr>
+            <tr>
+                <td>Tservers</td>
+                <td>2 / 3</td>
+            </tr>
+            <tr>
+                <td>Offline Tablets</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Free Space</td>
+                <td>33%</td>
+            </tr>
+        </table>
+    </div>
+
+    <div id="zookeeper-panel">
+        <h3>Zookeeper Status</h3>
+        <table>
+            <tr>
+                <th>Node</th>
+                <th># tservers</th>
+                <th>Role</th>
+            </tr>
+            <tr>
+                <td>node1</td>
+                <td>123</td>
+                <td>follower</td>
+            </tr>
+            <tr>
+                <td>node2</td>
+                <td>231</td>
+                <td>follower</td>
+            </tr>
+            <tr>
+                <td>node3</td>
+                <td>321</td>
+                <td>leader</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<div class="block">
+    <table>
+        <tr>
+            <th>Elapsed</th>
+            <th>Reason</th>
+            <th>tid</th>
+            <th>Table Name</th>
+            <th>Created</th>
+            <th>Tx ID</th>
+        </tr>
+        <tr>
+            <td>01:12:45</td>
+            <td>compaction</td>
+            <td>9ax</td>
+            <td>dataset_3</td>
+            <td>2018-02-01T07:12:53</td>
+            <td>123456789</td>
+        </tr>
+        <tr>
+            <td>01:12:45</td>
+            <td>compaction</td>
+            <td>87</td>
+            <td>dataset_2</td>
+            <td>2018-02-01T07:12:53</td>
+            <td>123456789</td>
+        </tr>
+        <tr>
+            <td>01:12:45</td>
+            <td>compaction</td>
+            <td>56</td>
+            <td>dataset_1</td>
+            <td>2018-02-01T07:12:53</td>
+            <td>123456789</td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
