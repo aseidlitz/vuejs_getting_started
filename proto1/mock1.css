@@ -1,0 +1,77 @@
+.header {
+    background-color: #f1f1f1;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Style the top navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+}
+
+/* Style the topnav links */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change color on hover */
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.overview-panel {
+    display: flex;
+    justify-content: space-evenly;
+    border-color: red;
+    border-style: solid;
+}
+
+#zookeeper-panel {
+    border-color: blue;
+    border-style: solid;
+    width: 33.3%;
+    padding-bottom: 5px;
+}
+
+#accumulo-panel {
+    border-color: blue;
+    border-style: solid;
+    width: 33.3%;
+}
+
+#fate-panel {
+    border-color: yellow;
+    border-style: solid;
+    width: 33.3%;
+}
+
+
+.block {
+    border-color: green;
+    border-style: solid;
+    clear: both;
+}
+
+body {
+    background-color: cornsilk;
+}
+
+table {
+    width: 100%;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 5px;
+}
