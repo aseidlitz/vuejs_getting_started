@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello World 1</title>
+</head>
+<body>
+
+<!--
+online dist (as of 2018-02-09)
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.13/dist/vue.js"></script>
+<script src="https://unpkg.com/vue"></script>
+-->
+
+<script src="./dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ message }}</p>
+</div>
+
+
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                message: 'Can you see this?'
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
