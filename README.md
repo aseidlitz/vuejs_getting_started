@@ -20,6 +20,7 @@ and techniques.
   Generated code in ./hello_vue_cli
 2. Step 1 - Initial vue.js hello word (js only) and mock application layout using html / css.
   Code contained in ./proto1 
+3. Step 2 - Code samples exploring the vue.js getting started guide [vue.js](https://vuejs.org/v2/guide/)
 
 ### Step 0 Goals:
 
