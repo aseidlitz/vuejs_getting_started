@@ -11,7 +11,7 @@ import static org.eclipse.jetty.servlet.ServletContextHandler.NO_SESSIONS;
 /**
  * Hello world!
  */
-public class App {
+public class JsonServer {
 
   public static void main(String[] args) throws Exception {
 

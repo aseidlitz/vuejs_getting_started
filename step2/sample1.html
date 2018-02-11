@@ -20,15 +20,23 @@ online dist (as of 2018-02-09)
     <p>{{ message }}</p>
     <table>
         <tr>
-            <th>Node</th>
-            <th># tservers</th>
-            <th>Role</th>
+
+            <th v-for="h in colNames">
+                {{h}}
+            </th>
+
         </tr>
+            <tr v-for="r in fates">
+                <td>{{r.duration}}</td>
+                <td>{{r.txId}}</td>
+                <td>{{r.tableId}}</td>
+                <td>{{r.tableName}}</td>
+                <td>{{r.reason}}</td>
+                <td>{{r.startTime}}</td>
+                <td>{{r.updateTime}}</td>
+            </tr>
     </table>
 
-    <li v-for="fate in fates">
-        {{ fate.txId }}:{{ fate.tableId }}:{{fate.tableName}}
-    </li>
 </div>
 
 <script>
@@ -46,11 +54,27 @@ online dist (as of 2018-02-09)
                     'Update Time'
                 ],
                 fates: [
-                    {txId: '12345678', tableId: '123', tableName: "tableA", reason: "compaction", txStartTimestamp: '2018-02-10T01:23:56', txUpdateTimestamp:  '2018-02-10T02:34:56'},
-                    {txId: '12345679', tableId: '345', tableName: "tableB", reason: "create", txStartTimestamp: '2018-02-10T01:23:56', txUpdateTimestamp:  '2018-02-10T02:34:56'},
-                    {txId: '23456789', tableId: '3ab', tableName: "tableC", reason: "deletion", txStartTimestamp: '2018-02-10T01:23:56', txUpdateTimestamp:  '2018-02-10T02:34:56'}
+                    {
+                        "duration": "0:23",
+                        "txId": "12345678",
+                        "tableId": "123",
+                        "tableName": "tableA",
+                        "reason": "compaction",
+                        "startTime": "2018-02-10T01:23:56",
+                        "updateTime": "2018-02-10T02:34:56"
+                    },
+                    {
+                        "duration": "4:56",
+                        "txId": "12345678",
+                        "tableId": "123",
+                        "tableName": "tableB",
+                        "reason": "create",
+                        "startTime": "2018-02-10T01:23:56",
+                        "updateTime": "2018-02-10T02:34:56"
+                    }
                 ],
-                message: 'Getting started 1'
+                message:
+                    'Getting started 1'
             }
         }
     })
