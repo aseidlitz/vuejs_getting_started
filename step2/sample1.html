@@ -36,6 +36,18 @@ online dist (as of 2018-02-09)
             <td>{{r.updateTime}}</td>
         </tr>
 
+
+        <tr v-for="r in getActiveFates" :key="r.txId" >
+            <td>{{r.duration}}</td>
+            <td>{{r.txId}}</td>
+            <td>{{r.tableId}}</td>
+            <td>{{r.tableName}}</td>
+            <td>{{r.reason}}</td>
+            <td>{{r.startTime}}</td>
+            <td>{{r.updateTime}}</td>
+            <td>{{r.flag}}</td>
+        </tr>
+
     </table>
 
 </div>
@@ -56,18 +68,29 @@ online dist (as of 2018-02-09)
                     "tableName": "tableA",
                     "reason": "compaction",
                     "startTime": "2018-02-10T01:23:56",
-                    "updateTime": "2018-02-10T02:34:56"
+                    "updateTime": "2018-02-10T02:34:56",
+                    flag: false
                 },
                 {
                     "duration": "4:56",
                     "txId": "12345678",
                     "tableId": "123",
                     "tableName": "tableB",
-                    "reason": "create",
+                    "reason": "success",
                     "startTime": "2018-02-10T01:23:56",
-                    "updateTime": "2018-02-10T02:34:56"
+                    "updateTime": "2018-02-10T02:34:56",
+                    flag: true
                 }
             ]
+        },
+        getters: {
+            fateList: state => {
+                return state.fates
+            },
+
+            activeFates: state => {
+                return state.fates.filter(fate => fate.reason !== 'success')
+            }
         }
     })
 
@@ -75,13 +98,19 @@ online dist (as of 2018-02-09)
         el: '#app',
 
         computed:{
+            <!-- These should be converted to using store getters - name now are to show to differentiate name from those in store.-->
             getMsg () {
-                return store.state.storeMsg
+                return store.state.storeMsg + ': ' + new Date().toLocaleString()
             },
 
             getFates () {
-              return store.state.fates
+              return store.getters.fateList
+            },
+
+            getActiveFates () {
+                return store.getters.activeFates
             }
+
         },
 
         data() {
