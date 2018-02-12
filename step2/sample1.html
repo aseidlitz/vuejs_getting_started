@@ -13,11 +13,12 @@ online dist (as of 2018-02-09)
 -->
 
 <script src="./dist/vue.js"></script>
+<script src="./dist/vuex.js"></script>
 
 <!-- Prototype the fate list - eventually this will be a component. -->
 
 <div id="app">
-    <p>{{ message }}</p>
+    <p>{{ getMsg }}</p>
     <table>
         <tr>
 
@@ -25,23 +26,64 @@ online dist (as of 2018-02-09)
                 {{h}}
             </th>
 
+        <tr v-for="r in getFates" :key="r.txId" >
+            <td>{{r.duration}}</td>
+            <td>{{r.txId}}</td>
+            <td>{{r.tableId}}</td>
+            <td>{{r.tableName}}</td>
+            <td>{{r.reason}}</td>
+            <td>{{r.startTime}}</td>
+            <td>{{r.updateTime}}</td>
         </tr>
-            <tr v-for="r in fates">
-                <td>{{r.duration}}</td>
-                <td>{{r.txId}}</td>
-                <td>{{r.tableId}}</td>
-                <td>{{r.tableName}}</td>
-                <td>{{r.reason}}</td>
-                <td>{{r.startTime}}</td>
-                <td>{{r.updateTime}}</td>
-            </tr>
+
     </table>
 
 </div>
 
 <script>
+
+
+    const store = new Vuex.Store({
+        state:{
+
+            storeMsg: "a message from the store",
+
+            fates: [
+                {
+                    "duration": "1:11",
+                    "txId": "12345678",
+                    "tableId": "123",
+                    "tableName": "tableA",
+                    "reason": "compaction",
+                    "startTime": "2018-02-10T01:23:56",
+                    "updateTime": "2018-02-10T02:34:56"
+                },
+                {
+                    "duration": "4:56",
+                    "txId": "12345678",
+                    "tableId": "123",
+                    "tableName": "tableB",
+                    "reason": "create",
+                    "startTime": "2018-02-10T01:23:56",
+                    "updateTime": "2018-02-10T02:34:56"
+                }
+            ]
+        }
+    })
+
     new Vue({
         el: '#app',
+
+        computed:{
+            getMsg () {
+                return store.state.storeMsg
+            },
+
+            getFates () {
+              return store.state.fates
+            }
+        },
+
         data() {
             return {
                 colNames: [
@@ -52,29 +94,7 @@ online dist (as of 2018-02-09)
                     'Reason',
                     'Start Time',
                     'Update Time'
-                ],
-                fates: [
-                    {
-                        "duration": "0:23",
-                        "txId": "12345678",
-                        "tableId": "123",
-                        "tableName": "tableA",
-                        "reason": "compaction",
-                        "startTime": "2018-02-10T01:23:56",
-                        "updateTime": "2018-02-10T02:34:56"
-                    },
-                    {
-                        "duration": "4:56",
-                        "txId": "12345678",
-                        "tableId": "123",
-                        "tableName": "tableB",
-                        "reason": "create",
-                        "startTime": "2018-02-10T01:23:56",
-                        "updateTime": "2018-02-10T02:34:56"
-                    }
-                ],
-                message:
-                    'Getting started 1'
+                ]
             }
         }
     })
