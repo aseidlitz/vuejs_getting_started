@@ -26,6 +26,8 @@ online dist (as of 2018-02-09)
                 {{h}}
             </th>
 
+        <tr><td>All</td></tr>
+
         <tr v-for="r in getFates" :key="r.txId" >
             <td>{{r.duration}}</td>
             <td>{{r.txId}}</td>
@@ -36,6 +38,7 @@ online dist (as of 2018-02-09)
             <td>{{r.updateTime}}</td>
         </tr>
 
+        <tr><td>Filtered - Active</td></tr>
 
         <tr v-for="r in getActiveFates" :key="r.txId" >
             <td>{{r.duration}}</td>
@@ -45,7 +48,6 @@ online dist (as of 2018-02-09)
             <td>{{r.reason}}</td>
             <td>{{r.startTime}}</td>
             <td>{{r.updateTime}}</td>
-            <td>{{r.flag}}</td>
         </tr>
 
     </table>
@@ -69,18 +71,26 @@ online dist (as of 2018-02-09)
                     "reason": "compaction",
                     "startTime": "2018-02-10T01:23:56",
                     "updateTime": "2018-02-10T02:34:56",
-                    flag: false
                 },
                 {
                     "duration": "4:56",
                     "txId": "12345678",
                     "tableId": "123",
                     "tableName": "tableB",
-                    "reason": "success",
+                    "reason": "Success",
                     "startTime": "2018-02-10T01:23:56",
                     "updateTime": "2018-02-10T02:34:56",
-                    flag: true
+                },
+                {
+                    "duration": "0:56",
+                    "txId": "12345678",
+                    "tableId": "123",
+                    "tableName": "tableB",
+                    "reason": "failed",
+                    "startTime": "2018-02-10T01:23:56",
+                    "updateTime": "2018-02-10T02:34:56",
                 }
+
             ]
         },
         getters: {
@@ -89,10 +99,12 @@ online dist (as of 2018-02-09)
             },
 
             activeFates: state => {
-                return state.fates.filter(fate => fate.reason !== 'success')
+                return state.fates.filter(fate => {
+                    return fate.reason.toLowerCase() !== 'success' && fate.reason.toLowerCase() !== 'failed';
+                })
             }
         }
-    })
+    });
 
     new Vue({
         el: '#app',
